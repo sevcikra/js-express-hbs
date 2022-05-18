@@ -3,6 +3,15 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script>
+      var digitalData = digitalData || {};
+      digitalData = {
+        fpid: "{{fpid}}"
+      }
+    </script>
+    {{#if isLocalhost}}
+      <script src="https://assets.adobedtm.com/4ef014d90ea4/3a0b49b01f30/launch-3fe915bafa9b-development.min.js"></script>
+    {{/if}}
   </head>
   <body>
     {{{body}}}
