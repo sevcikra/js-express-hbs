@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
   if (cookie === undefined) {
     // no: set a new cookie
     randomNumber=crypto.randomUUID()
-    res.cookie('FPID',randomNumber, { maxAge: 900000, httpOnly: true });
+    res.cookie('FPID',randomNumber, { domain: '.sevcikdemo.eu', maxAge: 900000, httpOnly: true });
     console.log('cookie created successfully');
 
   } else {
