@@ -30,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // set a cookie
 app.use(function (req, res, next) {
+  const domain = req.hostname;
+  console.log(domain);
   console.log('exjs: set a cookie:')
   // check if client sent cookie
   var cookie = req.cookies.FPID;
@@ -37,7 +39,11 @@ app.use(function (req, res, next) {
   if (cookie === undefined) {
     // no: set a new cookie
     randomNumber=crypto.randomUUID()
-    res.cookie('FPID',randomNumber, { domain: '.sevcikdemo.eu', maxAge: 900000, httpOnly: true });
+    if(domain === 'sevcikdemo.eu'){
+      res.cookie('FPID',randomNumber, { domain: '.sevcikdemo.eu', maxAge: 900000, httpOnly: true });
+    } else {
+      res.cookie('FPID',randomNumber, { maxAge: 900000, httpOnly: true });
+    }
     console.log('cookie created successfully');
 
   } else {
